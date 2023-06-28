@@ -30,3 +30,15 @@ Executando o Projeto no Docker
 docker run -p 8080:8080 myapp
 ```
 
+H2 console URL:
+
+```
+localhost:8080/h2-console
+```
+
+JDBC URL
+
+```
+jdbc:h2:mem:testdb
+```
+

@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  myapp_development:
+    container_name: myapp_development
+    image: myapp
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+        - spring-demo-network
+networks:
+    spring-demo-network:
+        driver: bridge
