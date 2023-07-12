@@ -41,4 +41,8 @@ JDBC URL
 ```
 jdbc:h2:mem:testdb
 ```
+VM ARGS
 
+```
+-DDATABASE_URL=jdbc:postgresql://localhost:5432/demo?user=postgres&password=testeabc
+```

@@ -10,5 +10,5 @@ import com.example.demo.model.User;
 
 public interface UserRepository  extends JpaRepository<User, Long>{
 public Optional<User> findByName(String name);
-public Page<User> findByNameContaining(String name, Pageable pageable);
+public Page<User> findByNameContainingIgnoreCase(String name, Pageable pageable);
 }

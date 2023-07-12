@@ -42,8 +42,17 @@ public class UserController {
 	
 	
 	@GetMapping
-	public Page<User> pesquisar(@RequestParam(required = false, defaultValue = "%") String nome, Pageable pageable) {
-		return userService.findByNameContaining(nome, pageable);
+	public Page<User> pesquisar(@RequestParam(required = false, defaultValue = "%") String name, Pageable pageable) {
+		
+		System.out.println("NAME: " + name);
+		
+		Page<User> users = userService.findByNameContaining(name, pageable);
+		
+        if (users.isEmpty() && name.equals("%")) {
+            users = userService.findAll(pageable);
+        }
+        
+		return users;
 	}
 	
 }

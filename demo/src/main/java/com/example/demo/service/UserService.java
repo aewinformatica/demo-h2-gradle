@@ -27,7 +27,11 @@ public class UserService {
 	
 	public Page<User> findByNameContaining(String name, Pageable pageable) {
 		
-		return userRepository.findByNameContaining(name, pageable);
+		return userRepository.findByNameContainingIgnoreCase(name, pageable);
+	}
+
+	public Page<User> findAll(Pageable pageable) {
+		return userRepository.findAll(pageable);
 	}
 	
 }
