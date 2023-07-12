@@ -1,16 +1,23 @@
 version: '3.7'
 
 services:
-  myapp_development:
-    container_name: myapp_development
-    image: myapp
+  web_service:
+    container_name: web_container
     build:
       context: ./
       dockerfile: ./Dockerfile
+    depends_on:
+      - postgres_service
     ports:
       - 8080:8080
-    networks:
-        - spring-demo-network
-networks:
-    spring-demo-network:
-        driver: bridge
+    environment:
+      - DATABASE_URL=jdbc:postgresql://postgres_service:5432/postgres?user=postgres&password=testeabc  
+      
+  postgres_service:
+    container_name: db_container
+    image: postgres:9.6 
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: testeabc
+    ports:
+      - "5432:5432"
