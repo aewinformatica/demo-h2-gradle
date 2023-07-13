@@ -2,20 +2,20 @@ version: '3.7'
 
 services:
   web_service:
-    container_name: web_container
+    container_name: demo_web_container
     build:
       context: ./
       dockerfile: ./Dockerfile
     depends_on:
       - postgres_service
     ports:
-      - 8080:8080
+      - 80:8080
     environment:
-      - DATABASE_URL=jdbc:postgresql://postgres_service:5432/postgres?user=postgres&password=testeabc  
+      - DATABASE_URL=jdbc:postgresql://db_demo_container:5432/postgres?user=postgres&password=testeabc  
       
   postgres_service:
-    container_name: db_container
-    image: postgres:9.6 
+    container_name: db_demo_container
+    image: postgres:9 
     restart: unless-stopped
     environment:
       POSTGRES_PASSWORD: testeabc

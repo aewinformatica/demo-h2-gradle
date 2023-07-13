@@ -12,10 +12,11 @@ CMD ["java", "-jar", "/demo.jar"]
 ```
 
 
-Gerando o jar
+Gerando o jar/ gerando jar sem testes
 
 ```
 ./gradlew build
+ ./gradlew build -x test
 ```
 
 Entre na raiz do projeto e execute o comando a seguir:
